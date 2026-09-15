@@ -1,0 +1,20 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# OS artifacts
+.DS_Store
+Thumbs.db
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# IDE files
+.vscode/
+.idea/
+
+# Note: data/milemoa.db and .state/checkpoint.json are deliberately NOT ignored
+# so that Streamlit Community Cloud has the initial database and status upon deployment.
