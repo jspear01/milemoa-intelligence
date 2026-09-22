@@ -464,9 +464,27 @@ if view_mode == "📋 Card View":
     if filtered.empty:
         st.info("🔍 필터 조건에 맞는 포스트가 없습니다.")
     else:
-        st.caption(f"총 {len(filtered)}개 포스트")
+        # ── Sort control ──
+        sort_col, count_col = st.columns([2, 3])
+        with sort_col:
+            sort_by = st.selectbox(
+                "정렬 기준",
+                ["최신순 📅", "오래된순 📅", "중요도순 ⭐"],
+                index=0,
+                label_visibility="collapsed",
+            )
+        with count_col:
+            st.caption(f"총 {len(filtered)}개 포스트")
 
-        for _, row in filtered.head(50).iterrows():
+        # Apply sort
+        if sort_by == "최신순 📅":
+            sorted_filtered = filtered.sort_values("date_posted", ascending=False)
+        elif sort_by == "오래된순 📅":
+            sorted_filtered = filtered.sort_values("date_posted", ascending=True)
+        else:  # 중요도순
+            sorted_filtered = filtered.sort_values("importance_score", ascending=False)
+
+        for _, row in sorted_filtered.head(50).iterrows():
             urgency = row.get("urgency_level", "Low") or "Low"
             badge_class = f"badge-{urgency.lower()}"
             urgency_emoji = {"High": "🔴", "Medium": "🟡", "Low": "🟢"}.get(urgency, "⚪")
@@ -523,22 +541,47 @@ elif view_mode == "📊 Table View":
     if filtered.empty:
         st.info("🔍 필터 조건에 맞는 포스트가 없습니다.")
     else:
+        # Build display DataFrame — include url alongside title for link column
         display_cols = [
-            "urgency_level", "title", "target_category", "author",
+            "urgency_level", "title", "url", "target_category", "author",
             "comment_count", "view_count", "importance_score",
             "actionable_deal", "date_posted",
         ]
         available_cols = [c for c in display_cols if c in filtered.columns]
         display_df = filtered[available_cols].copy()
-        display_df.columns = [
-            c.replace("_", " ").title() for c in available_cols
-        ]
+
+        # Rename for display
+        rename_map = {
+            "urgency_level": "긴급도",
+            "title": "제목",
+            "url": "링크",
+            "target_category": "카테고리",
+            "author": "작성자",
+            "comment_count": "댓글",
+            "view_count": "조회",
+            "importance_score": "점수",
+            "actionable_deal": "핫딜",
+            "date_posted": "등록일",
+        }
+        display_df = display_df.rename(columns={k: v for k, v in rename_map.items() if k in display_df.columns})
 
         st.dataframe(
             display_df,
             use_container_width=True,
             height=600,
             hide_index=True,
+            column_config={
+                "제목": st.column_config.TextColumn("제목", width="large"),
+                "링크": st.column_config.LinkColumn(
+                    "🔗 원문 링크",
+                    display_text="열기 ↗",
+                    width="small",
+                ),
+                "점수": st.column_config.NumberColumn("점수", format="%.1f"),
+                "핫딜": st.column_config.CheckboxColumn("핫딜"),
+                "댓글": st.column_config.NumberColumn("댓글"),
+                "조회": st.column_config.NumberColumn("조회"),
+            },
         )
 
 
