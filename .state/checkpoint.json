@@ -1,7 +1,7 @@
 {
-  "last_scraped_post_id": "12535365",
+  "last_scraped_post_id": "12536081",
   "last_scraped_page": 1,
-  "last_run_timestamp": "2026-10-13T18:45:25.217220+00:00",
+  "last_run_timestamp": "2026-10-14T03:05:06.704043+00:00",
   "processed_post_ids": [
     "12365706",
     "12378084",
@@ -535,11 +535,15 @@
     "12533935",
     "12535365",
     "12535099",
-    "12534640"
+    "12534640",
+    "12536081",
+    "12536021",
+    "12535711",
+    "12535640"
   ],
   "pipeline_phase": "DASHBOARD_READY",
   "error_message": null,
-  "total_posts_scraped": 533,
-  "total_posts_summarized": 533,
-  "_saved_at": "2026-10-13T18:45:30.846152+00:00"
+  "total_posts_scraped": 537,
+  "total_posts_summarized": 537,
+  "_saved_at": "2026-10-14T03:05:13.688811+00:00"
 }
