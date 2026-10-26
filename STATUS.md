@@ -3,12 +3,12 @@
 | Field | Value |
 |-------|-------|
 | **Status** | ✅ `DASHBOARD_READY` |
-| **Last Run** | 2026-10-26T02:42:05.404244+00:00 |
-| **Last Scraped Post ID** | 12554339 |
+| **Last Run** | 2026-10-26T18:03:49.975059+00:00 |
+| **Last Scraped Post ID** | 12555102 |
 | **Last Scraped Page** | 1 |
-| **Total Posts Scraped** | 1131 |
-| **Total Posts Summarized** | 1131 |
-| **Processed IDs Count** | 1131 |
+| **Total Posts Scraped** | 1136 |
+| **Total Posts Summarized** | 1136 |
+| **Processed IDs Count** | 1136 |
 
 ## Quick Reference
 
@@ -18,4 +18,4 @@
 - **Sync**: `python run.py sync`
 
 ---
-*Auto-generated at 2026-10-26T02:42:15.372384+00:00*
+*Auto-generated at 2026-10-26T18:04:00.481640+00:00*
