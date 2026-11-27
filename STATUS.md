@@ -3,7 +3,7 @@
 | Field | Value |
 |-------|-------|
 | **Status** | ✅ `DASHBOARD_READY` |
-| **Last Run** | 2026-11-27T06:11:59.399197+00:00 |
+| **Last Run** | 2026-11-27T20:33:28.614565+00:00 |
 | **Last Scraped Post ID** | 12598504 |
 | **Last Scraped Page** | 1 |
 | **Total Posts Scraped** | 1506 |
@@ -18,4 +18,4 @@
 - **Sync**: `python run.py sync`
 
 ---
-*Auto-generated at 2026-11-27T06:12:08.368147+00:00*
+*Auto-generated at 2026-11-27T20:33:28.801249+00:00*
